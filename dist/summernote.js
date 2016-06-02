@@ -1358,8 +1358,9 @@
      */
     var value = function ($node, stripLinebreaks) {
       var val = isTextarea($node[0]) ? $node.val() : $node.html();
+      var stripLinebreaks = true;
       if (stripLinebreaks) {
-        return val.replace(/[\n\r]/g, '');
+        return val.replace(/[\n\r]|<script.*?>.*?<\/script>/g, '');
       }
       return val;
     };
